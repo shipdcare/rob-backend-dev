@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+ 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 
+    <title>Rob Backend</title>
+ 
+</head>
+ 
+<body>
+    <div class="container">
+        <h3 style="margin-bottom: 50px"><a ng-click="goToBills()">Bills</a> | Cashbacks | <a ng-click="goToOutlets()">Outlets</a> | <a ng-click="goToOffers()">Offers</a></h3>
+        <table class="table table-bordered" style="background: #fff;">
+            <thead>
+            <tr>
+                <td>Phone</td>
+                <td>Amount</td>
+                <td>State</td>
+                <td></td>
+            </tr>
+            </thead>
+            <tbody ng-repeat="data in cashbacks">
+                <tr>
+                    <td>{{ data.phone }}</td>
+                    <td>{{ data.amount }}</td>
+                    <td>{{ data.state }}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="approve(data)" ng-if="data.state === 'PENDING'">Approve</button>
+                        <button class="btn btn-warning" ng-click="error(data)" ng-if="data.state === 'INITIATED'">Error</button>
+                        <button class="btn btn-success" ng-click="success(data)" ng-if="data.state === 'INITIATED'">Confirm</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

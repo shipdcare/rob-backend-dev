@@ -1,0 +1,99 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+
+.unlimited-items {
+  flex-wrap: wrap;
+}
+.unlimited-items .col{
+  flex: none;
+  width: 50%;
+}
+.mybills-parent .list:last-child.card{
+    margin-bottom: 0px;
+}
+.mybills-parent .card{
+    margin:0px;
+}
+.mybills-parent .item-image img:first-child, .item-image .list-img {
+    width: 80% !important;
+    margin: 10px;
+}
+.mybills-card-first-item-bg{
+    background-color: #f5f4f4 !important;
+}
+.mybills-status-rejected{
+    border: 1px dashed #eb3b00;
+    background-color: #fff4f0;
+    color: #eb3b00 !important;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 60% !important;
+    padding:5px;
+}
+.mybills-status-approved{
+    border: 1px dashed #00870d;
+    background-color: #aff7b6;
+    color: #00870d !important;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 60% !important;
+    padding:5px;
+}
+.mybills-status-pending{
+    border: 1px dashed #b29100;
+    background-color: #f7ebaf;
+    color: #b29100 !important;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 60% !important;
+    padding:5px;
+}
+
+.bill {
+	margin-bottom: 10px !important;
+}
+
+.card {
+  background: #fff;
+  border: 2px solid white;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.outlet-image {
+  height: 80px;
+  width: 100%;
+}
+
+.item-input {
+  width: 100%;
+  display: block;
+}
+
+.item-input input{
+  width: 100%;
+}

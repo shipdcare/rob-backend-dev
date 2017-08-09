@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+ 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 
+    <title>Rob Backend</title>
+ 
+</head>
+ 
+<body>
+    <div class="container">
+        <h3 style="margin-bottom: 50px">Bills | <a ng-click="goToCashback()">Cashbacks</a> |  <a ng-click="goToOutlets()">Outlets</a> | <a ng-click="goToOffers()">Offers</a> | <a ng-click="goToBillsByOutlet()">Bills By Outlet</a></h3>
+        <div class="row"> 
+        <div ng-repeat="data in bills">
+          <div class="col-md-3 card" style="margin: 10px; width: 22%;">
+              <div class="row" style="margin-bottom: 15px;">
+                <div class="col-md-4" align="left">&#8377; {{data.amount}}/-</div>
+                <div class="col-md-4 col-md-offset-4" align="right"><span ng-class="{'mybills-status-approved': data.status == 'APPROVED' , 'mybills-status-pending': data.status == 'PENDING',
+    'mybills-status-rejected': data.status == 'REJECTED'} ">{{data.status}}</span></div>
+            </div>
+            <div class="row" style="margin: 10px;">
+                {{ data.offer_title }}
+            </div>
+             <img ng-src="{{data.face}}" height="250" style="width: 100%" />
+             <div class="item" style="padding-top:10px" ng-if="data.status == 'PENDING'">
+                  <div class="row" style="margin: 10px 0;">
+                      <a ng-click="accept(data)" class="col-md-5 btn btn-success">Accept</a>
+                      <div class="col-md-2"></div>
+                      <a ng-click="reject(data)" class="col-md-5 btn btn-danger">Reject</a>
+                  </div>
+             </div>
+          </div>
+          </div>
+       </div>
+    </div>
+ 
+</body></html>

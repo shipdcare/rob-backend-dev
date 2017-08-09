@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+ 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ 
+    <title>Rob Backend</title>
+ 
+</head>
+ 
+<body>
+    <div class="container">
+        <h3 style="margin-bottom: 50px"><a ng-click="goToBills()">Bills</a> | <a ng-click="goToCashback()">Cashbacks</a> | Outlets | <a ng-click="goToOffers()">Offers</a></h3>
+        <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" style="margin-bottom: 25px">Add Outlet</button>
+        <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <form name="outletForm" id="outletForm" ng-submit="submit(outletForm)">
+            <!-- Modal content-->
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Outlet</h4>
+            </div>
+            <div class="modal-body">
+                    <label class="item item-input" style="margin: 10px 0">
+                        <input type="text" ng-model="outlet.name" placeholder="Name" required>
+                    </label>
+                    <label class="item item-input" style="margin: 10px 0">
+                        <input type="text" ng-model="outlet.description" placeholder="Description" required>
+                    </label>
+					<label class="item item-input" style="margin: 10px 0">
+                        <input type="text" ng-model="outlet.mobile" placeholder="Contact Number" required>
+                    </label>
+                     <label class="item item-input" style="margin: 10px 0">
+                        <input type="text" ng-model="outlet.face" placeholder="Image link" required>
+                    </label>
+                    <label class="item item-input" style="margin: 10px 0">
+                        
+						<select id="LocationSelector" ng-model="outlet.locality" style="width: 100%;" required>
+							<option ng-repeat="data in localities">{{data.name}}</option>
+						</select>
+                    </label>
+                    <label class="item item-input" style="margin: 10px 0">
+                        <input type="text" ng-model="outlet.address" placeholder="Address" required>
+                    </label>
+                    <label class="item item-input" style="margin: 10px 0">
+                        <input type="text" ng-model="outlet.offer" placeholder="Offer" required>
+                    </label>
+                    <label class="item item-input" style="margin: 10px 0">
+                        <input type="number" ng-model="outlet.cashback" placeholder="Cashback" required>
+                    </label>
+                    <label class="item item-input" style="margin: 10px 0">
+                        <select ng-model="outlet.trending" required>
+                            <option value=true>True</option>
+                            <option value=false>False</option>
+                        </select>
+                    </label>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="submit" >Save</button>
+            </div>
+            </form>
+            </div>
+
+        </div>
+        </div>
+        <table class="table table-bordered" style="background: #fff;">
+            <thead>
+            <tr>
+                <td>Id</td>
+				<td>Date</td>
+                <td>Name</td>
+                <td>Image</td>
+                <td>Address</td>
+                <td>Location</td>
+                <td>Offer</td>
+                <td>Trending</td>
+				<td>Mobile</td>
+                <td>Description</td>
+                <td>Cashback</td>
+            </tr>
+            </thead>
+            <tbody ng-repeat="data in outlets | orderBy:'date'">
+                <tr>
+                    <td>{{ data.id }}</td>
+					<td>{{data.date}}</td>
+                    <td>{{ data.name }}</td>
+                    <td><img ng-src="{{ data.face }}" class="outlet-image"/></td>
+                    <td>{{ data.address }}</td>
+                    <td>{{ data.locality }}</td>
+                    <td>{{ data.offer }}</td>
+                    <td>{{ data.trending }}</td>
+					<td>{{ data.mobile }}</td>
+                    <td>{{ data.description }}</td>
+                    <td>{{ data.cashback }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </body>
+</html>
