@@ -49,7 +49,7 @@ angular.module('myApp.bills', ['ngRoute', 'firebase'])
                         });
 
                         firebase.database().ref('transactions').push({
-                            user_id: user.$id,
+                            user_id: data.user_id,
                             amount: data.amount,
                             points:  (data.offer_cashback * 0.1 * data.amount),
                             offer_title: data.offer_title,
