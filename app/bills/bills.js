@@ -65,29 +65,32 @@ angular.module('myApp.bills', ['ngRoute', 'firebase'])
                 };
 
                 $scope.reject = function(data){
-                    var ref = firebase.database().ref('bills/' + data.$id);
-                    ref.update({
-                        status: 'REJECTED',
-                        admin_id: window.localStorage.getItem('user_id')
-                    });
-                    var req = {
-                        method: 'POST',
-                        url: 'https://fcm.googleapis.com/fcm/send',
-                        headers: {
-                            'Content-Type':'application/json',
-                            'Authorization': 'key=AIzaSyAWcDc3PIAuxSlyV0HJIoZDOfTGo2QMX40'
-                        },
-                        data: {
-                            data: {
-                                message: "Your bill of amount " + data.amount + " was rejected. Please upload a clear picture of the bill to get rewards."
+                    var userRef= firebase.database().ref('users/'+ data.user_id);
+                    userRef.once('value').then(function(user) {
+                        var ref = firebase.database().ref('bills/' + data.$id);
+                        ref.update({
+                            status: 'REJECTED',
+                            admin_id: window.localStorage.getItem('user_id')
+                        });
+                        var req = {
+                            method: 'POST',
+                            url: 'https://fcm.googleapis.com/fcm/send',
+                            headers: {
+                                'Content-Type':'application/json',
+                                'Authorization': 'key=AIzaSyAWcDc3PIAuxSlyV0HJIoZDOfTGo2QMX40'
                             },
-                            to: user.val().fcm_token
-                        }
-                    };
-                    $http(req).then(function(response){
-                        console.log(response);
-                    }, function(err){
-                        console.log(err);
+                            data: {
+                                data: {
+                                    message: "Your bill of amount " + data.amount + " was rejected. Please upload a clear picture of the bill to get rewards."
+                                },
+                                to: user.val().fcm_token
+                            }
+                        };
+                        $http(req).then(function(response){
+                            console.log(response);
+                        }, function(err){
+                            console.log(err);
+                        });
                     });
                 };
 

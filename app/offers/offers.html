@@ -3,7 +3,7 @@
  
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
- 
+    <!-- Latest compiled and minified CSS -->
     <title>Rob Backend</title>
  
 </head>
@@ -12,16 +12,13 @@
     <div class="container">
         <h3 style="margin-bottom: 50px"><a ng-click="goToBills()">Bills</a> | <a ng-click="goToCashback()">Cashbacks</a> | <a ng-click="goToOutlets()">Outlets</a> | Offers</h3>
         <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" style="margin-bottom: 25px">Add offer</button>
-        <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
             <form name="offerForm" ng-submit="submit(offerForm)">
             <!-- Modal content-->
-            <div class="modal-content">
-            <div class="modal-header">
+   
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Add offer</h4>
-            </div>
-            <div class="modal-body">
+        
+    
                     <label class="item item-input" style="margin: 10px 0">
                         <input type="text" ng-model="offer.store_id" placeholder="Store Id" required>
                     </label>
@@ -32,16 +29,12 @@
                         <input type="number" ng-model="offer.cashback" placeholder="Cashback" required>
                     </label>
                 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary" type="submit">Save</button>
-            </div>
-            </form>
-            </div>
+    
+        
 
-        </div>
-        </div>
+                <button class="btn btn-primary" type="submit">Save</button>
+           
+            </form>
         <table class="table table-bordered" style="background: #fff;">
             <thead>
             <tr>

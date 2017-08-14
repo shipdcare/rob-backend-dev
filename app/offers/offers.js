@@ -18,8 +18,8 @@ angular.module('myApp.offers', ['ngRoute', 'firebase'])
      $scope.offer = { 
          id: 0,
          title: "",
-         cashback: 0,
-         store_id: 0
+         cashback: "",
+         store_id: ""
      }
 
      $scope.goToCashback = function(){
